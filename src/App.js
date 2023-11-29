@@ -1,12 +1,15 @@
 import './App.css';
 // import Compteur from "./components/Compteur/Compteur";
-import TraitementCar from './components/CrudCars/TraitementCar/TraitementCar';
+// import TraitementCar from './components/CrudCarsExport/TraitementCar/TraitementCar';
+import CrudCars from './components/CrudCars/CrudCars';
+
 
 function App() {
   return (
     <div className="App">
       {/* <Compteur /> */}
-      <TraitementCar />
+      {/* <TraitementCar /> */}
+      <CrudCars />
     </div>
   );
 }

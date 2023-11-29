@@ -12,7 +12,7 @@ function TraitementCar() {
 
   return (
     <div>
-      <h1>CRUD CARS</h1>
+      <h1>CRUD CARS Exportable</h1>
       <ul>
         {cars.map((data) => (
           <div key={data.id}>
