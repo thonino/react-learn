@@ -19,14 +19,30 @@ function CrudCars() {
     alert(`Vous avez choisi : ${nom}`);
   }
 
-  // ADD
+  // CREATE
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = uuidv4();
-    const nom = e.target.elements.newCar.value;
-    const data ={id,nom}
-    if(nom){ setCars([...cars, data]); }
+    const nom = (e.target.elements.newCar.value).trim();
+    const data = { id, nom }
+    if (nom) { setCars([...cars, data])}
   };
+
+  // EDIT
+  const [editCar, setEditCar] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const handleEditClick = (id) => {setIsEditing(id);}
+
+  const handleUpdate = (data) => {
+    const newCars = cars.map((item) => {
+      if (item.id === data.id) {
+        return { ...item, nom: editCar };
+      }
+      return item;
+    });
+    setCars(newCars);
+    setIsEditing(false);
+  }
 
   return (
     <div>
@@ -34,13 +50,41 @@ function CrudCars() {
       <ul>
         {cars.map((data) => (
           <div key={data.id}>
-            {data.nom}
+            {data.nom}{" "}
+            {/* ---- EDIT ---- */}
+            <span>
+              {data.id === isEditing ? (
+                <div className="container">
+                  <input
+                    className="input-form"
+                    defaultValue={editCar ? editCar : data.nom}
+                    onChange={(e) => setEditCar(e.target.value)}
+                  />
+                  <button
+                    onClick={() => handleUpdate(data)}
+                    className="btn btn-success"
+                  >
+                    Ok
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => handleEditClick(data.id)}
+                  className="btn btn-warning"
+                >
+                  Edit
+                </button>
+              )}
+            </span>
+            {/* ---- DELETE ---- */}
             <button
               onClick={() => handleDelete(data.id)}
               className="btn btn-danger"
             >
               Delete
             </button>
+            {/* ---- CHOICE ---- */}
             <button
               onClick={() => handleChoice(data.nom)}
               className="btn btn-primary"
@@ -49,12 +93,13 @@ function CrudCars() {
             </button>
           </div>
         ))}
+        {/* ---- CREATE ---- */}
         <form onSubmit={handleSubmit}>
           <input
             className="input-form"
             name="newCar"
           />
-          <button 
+          <button
             className="btn btn-success"
             type="submit"
           >
