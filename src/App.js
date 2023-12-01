@@ -1,7 +1,8 @@
 import './App.css';
 // import Compteur from "./components/Compteur/Compteur";
 // import TraitementCar from './components/CrudCarsExport/TraitementCar/TraitementCar';
-import CrudCars from './components/CrudCars/CrudCars';
+// import CrudCars from './components/CrudCars/CrudCars';
+import CrudCars2 from './components/CrudCars/CrudCars2';
 
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
     <div className="App">
       {/* <Compteur /> */}
       {/* <TraitementCar /> */}
-      <CrudCars />
+      {/* <CrudCars /> */}
+      <CrudCars2 />
     </div>
   );
 }
