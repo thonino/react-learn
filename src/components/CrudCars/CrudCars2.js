@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function CrudCars() {
+function CrudCars2() {
   const [cars, setCars] = useState([
     { id: 1, nom: "Peugeot" },
     { id: 2, nom: "Tesla" },
@@ -17,22 +17,23 @@ function CrudCars() {
   // CHOICE
   const handleChoice = (nom) => {
     alert(`Vous avez choisi : ${nom}`);
-  }
+  };
 
   // CREATE
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = uuidv4();
-    const nom = (e.target.elements.newCar.value).trim();
-    const data = { id, nom }
-    if (nom) { setCars([...cars, data])}
+    const nom = e.target.elements.newCar.value.trim();
+    const data = { id, nom };
+    if (nom) {
+      setCars([...cars, data]);
+    }
   };
 
   // EDIT
   // Gérer affichage bouton "edit"
-  const [isEditing, setIsEditing] = useState(false);
-  const handleEditClick = (id) => {setIsEditing(id);}
-  
+  // const [isEditing, setIsEditing] = useState(false);
+  // const handleEditClick = (id) => {setIsEditing(id);}
   const [editCar, setEditCar] = useState("");
 
   const handleUpdate = (data) => {
@@ -43,8 +44,8 @@ function CrudCars() {
       return item;
     });
     setCars(newCars);
-    setIsEditing(false);
-  }
+    // setIsEditing(false);
+  };
 
   return (
     <div>
@@ -52,33 +53,32 @@ function CrudCars() {
       <ul>
         {cars.map((data) => (
           <div key={data.id}>
-            {data.nom}{" "}
-            {/* ---- EDIT ---- */}
+            {data.nom} {/* ---- EDIT ---- */}
             <span>
-            {/* Ternaire oui gérer bouton "edit"*/}
-            {data.id === isEditing ? (
-                <div className="container">
-                  <input
-                    className="input-form"
-                    defaultValue={editCar ? editCar : data.nom}
-                    onChange={(e) => setEditCar(e.target.value)}
-                  />
-                  <button
-                    onClick={() => handleUpdate(data)}
-                    className="btn btn-success"
-                  >
-                    Apply
-                  </button>
-                </div>
-            ) : (
-            <button
-              type="button"
-              onClick={() => handleEditClick(data.id)}
-              className="btn btn-warning"
-            >
-              Edit
-            </button>
-            )} 
+              {/* Ternaire oui gérer bouton "edit"*/}
+              {/* {data.id === isEditing ? ( */}
+              <div className="container">
+                <input
+                  className="input-form"
+                  defaultValue={editCar ? editCar : data.nom}
+                  onChange={(e) => setEditCar(e.target.value)}
+                />
+                <button
+                  onClick={() => handleUpdate(data)}
+                  className="btn btn-success"
+                >
+                  Apply
+                </button>
+              </div>
+              {/* ) : (
+<button
+  type="button"
+  onClick={() => handleEditClick(data.id)}
+  className="btn btn-warning"
+>
+  Edit
+</button>
+)} */}
             </span>
             {/* ---- DELETE ---- */}
             <button
@@ -98,14 +98,8 @@ function CrudCars() {
         ))}
         {/* ---- CREATE ---- */}
         <form onSubmit={handleSubmit}>
-          <input
-            className="input-form"
-            name="newCar"
-          />
-          <button
-            className="btn btn-success"
-            type="submit"
-          >
+          <input className="input-form" name="newCar" />
+          <button className="btn btn-success" type="submit">
             Add
           </button>
         </form>
@@ -114,4 +108,4 @@ function CrudCars() {
   );
 }
 
-export default CrudCars;
+export default CrudCars2;
