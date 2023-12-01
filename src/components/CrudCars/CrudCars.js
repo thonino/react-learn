@@ -55,7 +55,7 @@ function CrudCars() {
             {data.nom}{" "}
             {/* ---- EDIT ---- */}
             <span>
-            {/* Ternaire oui gérer bouton "edit"*/}
+            {/* Ternaire pour gérer bouton "edit"*/}
             {data.id === isEditing ? (
                 <div className="container">
                   <input
