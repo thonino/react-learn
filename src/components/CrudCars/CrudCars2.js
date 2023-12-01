@@ -30,22 +30,24 @@ function CrudCars2() {
     }
   };
 
-  // EDIT
-  // Gérer affichage bouton "edit"
-  // const [isEditing, setIsEditing] = useState(false);
-  // const handleEditClick = (id) => {setIsEditing(id);}
+  // EDIT ternaire
   const [editCar, setEditCar] = useState("");
-
   const handleUpdate = (data) => {
-    const newCars = cars.map((item) => {
-      if (item.id === data.id) {
-        return { ...item, nom: editCar };
-      }
-      return item;
-    });
+    const newCars = cars.map((item) => 
+      item.id === data.id ? { ...item, nom: editCar } : item
+    );
     setCars(newCars);
-    // setIsEditing(false);
   };
+
+  // EDIT Condition IF et ELSE
+  // const [editCar, setEditCar] = useState("");
+  // const handleUpdate = (data) => {
+  //   const newCars = cars.map((item) => {
+  //     if (item.id === data.id){return {...item, nom: editCar}}
+  //     else {return item}; // ou simplement : return item;
+  //   });
+  //   setCars(newCars);
+  // };
 
   return (
     <div>
@@ -53,10 +55,9 @@ function CrudCars2() {
       <ul>
         {cars.map((data) => (
           <div key={data.id}>
-            {data.nom} {/* ---- EDIT ---- */}
+            {data.nom} 
+            {/* ---- EDIT ---- */}
             <span>
-              {/* Ternaire oui gérer bouton "edit"*/}
-              {/* {data.id === isEditing ? ( */}
               <div className="container">
                 <input
                   className="input-form"
@@ -70,15 +71,6 @@ function CrudCars2() {
                   Apply
                 </button>
               </div>
-              {/* ) : (
-<button
-  type="button"
-  onClick={() => handleEditClick(data.id)}
-  className="btn btn-warning"
->
-  Edit
-</button>
-)} */}
             </span>
             {/* ---- DELETE ---- */}
             <button
