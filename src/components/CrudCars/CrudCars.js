@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 function CrudCars() {
   const [cars, setCars] = useState([
@@ -22,7 +21,7 @@ function CrudCars() {
   // CREATE
   const handleSubmit = (e) => {
     e.preventDefault();
-    const id = uuidv4();
+    const id = cars.length+1;
     const nom = (e.target.elements.newCar.value).trim();
     const data = { id, nom }
     if (nom) { setCars([...cars, data])}
