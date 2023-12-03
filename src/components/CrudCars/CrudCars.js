@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 function CrudCars() {
   const [cars, setCars] = useState([
@@ -22,16 +21,18 @@ function CrudCars() {
   // CREATE
   const handleSubmit = (e) => {
     e.preventDefault();
-    const id = uuidv4();
-    const nom = (e.target.elements.newCar.value).trim();
+    const id = cars.length+1;
+    const nom = (e.target.newCar.value).trim();
     const data = { id, nom }
     if (nom) { setCars([...cars, data])}
   };
 
   // EDIT
-  const [editCar, setEditCar] = useState("");
+  // Gérer affichage bouton "edit"
   const [isEditing, setIsEditing] = useState(false);
   const handleEditClick = (id) => {setIsEditing(id);}
+  
+  const [editCar, setEditCar] = useState("");
 
   const handleUpdate = (data) => {
     const newCars = cars.map((item) => {
@@ -53,7 +54,8 @@ function CrudCars() {
             {data.nom}{" "}
             {/* ---- EDIT ---- */}
             <span>
-              {data.id === isEditing ? (
+            {/* Ternaire pour gérer bouton "edit"*/}
+            {data.id === isEditing ? (
                 <div className="container">
                   <input
                     className="input-form"
@@ -64,18 +66,18 @@ function CrudCars() {
                     onClick={() => handleUpdate(data)}
                     className="btn btn-success"
                   >
-                    Ok
+                    Apply
                   </button>
                 </div>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => handleEditClick(data.id)}
-                  className="btn btn-warning"
-                >
-                  Edit
-                </button>
-              )}
+            ) : (
+            <button
+              type="button"
+              onClick={() => handleEditClick(data.id)}
+              className="btn btn-warning"
+            >
+              Edit
+            </button>
+            )} 
             </span>
             {/* ---- DELETE ---- */}
             <button
@@ -103,7 +105,7 @@ function CrudCars() {
             className="btn btn-success"
             type="submit"
           >
-            Ajouter
+            Add
           </button>
         </form>
       </ul>
