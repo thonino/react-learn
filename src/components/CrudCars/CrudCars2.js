@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function CrudCars2() {
+  // LISTE
   const [cars, setCars] = useState([
     { id: 1, nom: "Peugeot" },
     { id: 2, nom: "Tesla" },
@@ -22,7 +23,7 @@ function CrudCars2() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = cars.length +1;
-    const nom = e.target.elements.newCar.value.trim();
+    const nom = e.target.newCar.value.trim();
     const data = { id, nom };
     if (nom) {
       setCars([...cars, data]);
@@ -37,16 +38,6 @@ function CrudCars2() {
     );
     setCars(newCars);
   };
-
-  // EDIT Condition IF et ELSE
-  // const [editCar, setEditCar] = useState("");
-  // const handleUpdate = (data) => {
-  //   const newCars = cars.map((item) => {
-  //     if (item.id === data.id){return {...item, nom: editCar}}
-  //     else {return item}; // ou simplement : return item;
-  //   });
-  //   setCars(newCars);
-  // };
 
   return (
     <div>
