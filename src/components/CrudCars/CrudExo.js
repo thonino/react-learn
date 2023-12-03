@@ -2,7 +2,10 @@ import { useState } from 'react'
 
 
 function CrudExo() {
-  // Stocker useState pour gérer un tableau : const [tabs, setTabs] = useState([]);
+  // LISTE : RETURN
+  // Afficher datas : {produits.map((data)=> <div key={data.id}> {data.nom} </div>)}
+  // Ne pas oublier "key" sinon message  d'erreur
+  // Stocker tableau et gérer avec useState : const [tabs, setTabs] = useState([]);
   // Ajouter les datas : [{ id: 0, nom: "item" }, { id: 1, nom: "item" }]
   const [tabs, setTabs] = useState([
     { id: 0, nom: "Capuche" },
@@ -49,13 +52,13 @@ function CrudExo() {
   // Gestion Edit : LOGIQUE
   // Stocker handelSubmit et ajouter (event) : const handleSubmit = (e) => {}
   // Empecher le chargemement de la page pour gérer la MAJ : e.preventDefault();
-  // Stocker id = tabs.length et récupérer nom = e.target.elements.newItem.value;
+  // Stocker id = tabs.length et récupérer nom = e.target.newItem.value;
   // Stocker nouvel objet : data = { id, nom };
   // Récupérer datas du tableau et ajouter newItem : nom && setTabs([...tabs, data]);
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = tabs.length;
-    const nom = e.target.elements.newProduct.value;
+    const nom = e.target.newProduct.value;
     const data = { id, nom };
     nom && setTabs([...tabs, data]);
   };

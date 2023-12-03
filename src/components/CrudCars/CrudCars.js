@@ -22,7 +22,7 @@ function CrudCars() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const id = cars.length+1;
-    const nom = (e.target.elements.newCar.value).trim();
+    const nom = (e.target.newCar.value).trim();
     const data = { id, nom }
     if (nom) { setCars([...cars, data])}
   };
