@@ -49,7 +49,7 @@ function CrudExo() {
   // Gestion Submit : RETURN
   // Créer <form> avec attribut "onSubmit" / <button type=submit"> et <input  name="newItem">
   // Ajouter "handleSubmit" : onSubmit={handleSubmit}
-  // Gestion Edit : LOGIQUE
+  // Gestion Submit : LOGIQUE
   // Stocker handelSubmit et ajouter (event) : const handleSubmit = (e) => {}
   // Empecher le chargemement de la page pour gérer la MAJ : e.preventDefault();
   // Stocker id = tabs.length et récupérer nom = e.target.newItem.value;
