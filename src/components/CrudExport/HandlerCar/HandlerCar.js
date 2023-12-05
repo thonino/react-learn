@@ -1,7 +1,7 @@
 import ListCars from '../ListCars/ListCars.js';
 import EditCar from '../EditCar/EditCar.js';
 import DeleteCar from '../DeleteCar/DeleteCar.js';
-import ChoiceCar from '../ChoiceCar/ChoiceCar.js';
+import ChoiceCar from '../ShowCar/ShowCar.js';
 import AddCar from '../AddCar/AddCar.js';
 
 function TraitementCar() {

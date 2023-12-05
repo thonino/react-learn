@@ -1,10 +1,10 @@
-function ChoiceCar({ nom }) {
-  const choisirCar = () => {
+function ShowCar({ nom }) {
+  const seeCar = () => {
     alert(`Vous avez choisi ${nom}`);
   };
   return (
     <button 
-      onClick={choisirCar} 
+      onClick={seeCar} 
       className="btn btn-primary"
     >
       See
@@ -12,4 +12,4 @@ function ChoiceCar({ nom }) {
   );
 }
 
-export default ChoiceCar
+export default ShowCar;

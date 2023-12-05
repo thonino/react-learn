@@ -1,21 +1,21 @@
 import './App.css';
 // import Compteur from "./components/Compteur/Compteur";
-// import TraitementCar from './components/CrudCarsExport/TraitementCar/TraitementCar';
+import HandlerCar from './components/CrudExport/HandlerCar/HandlerCar';
 // import CrudCars from './components/CrudCars/CrudCars';
 // import CrudCars2 from './components/CrudCars/CrudCars2';
 // import CrudExo from "./components/CrudCars/CrudExo";
-import CrudExo2 from "./components/CrudCars/CrudExo2";
+// import CrudExo2 from "./components/CrudCars/CrudExo2";
 
 
 function App() {
   return (
     <div className="App">
       {/* <Compteur /> */}
-      {/* <TraitementCar /> */}
+      <HandlerCar />
       {/* <CrudCars /> */}
       {/* <CrudCars2 /> */}
       {/* <CrudExo/> */}
-      <CrudExo2/>
+      {/* <CrudExo2/> */}
     </div>
   );
 }
