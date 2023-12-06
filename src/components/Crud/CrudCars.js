@@ -47,7 +47,7 @@ function CrudCars() {
 
   return (
     <div>
-      <h1>CRUD CARS FULL</h1>
+      <h1>CRUD CARS</h1>
       <ul>
         {cars.map((data) => (
           <div key={data.id}>

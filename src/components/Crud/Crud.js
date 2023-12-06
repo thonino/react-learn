@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function CrudExo2() {
+function Crud() {
 
   const [produits, setProduits] = useState([
     { id: 0, nom: "item-1" },
@@ -75,6 +75,6 @@ function CrudExo2() {
   );
 }
 
-export default CrudExo2;
+export default Crud;
 
 
