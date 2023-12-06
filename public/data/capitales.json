@@ -1,0 +1,72 @@
+[
+  {
+    "id": 0,
+    "name": "Paris",
+    "continent": "Europe",
+    "population": 2200000,
+    "area": 105.4
+  },
+  {
+    "id": 1,
+    "name": "New York",
+    "continent": "Amérique du Nord",
+    "population": 8623000,
+    "area": 468.9
+  },
+  {
+    "id": 2,
+    "name": "Tokyo",
+    "continent": "Asie",
+    "population": 13929286,
+    "area": 2187.66
+  },
+  {
+    "id": 3,
+    "name": "Le Caire",
+    "continent": "Afrique",
+    "population": 9758624,
+    "area": 606.98
+  },
+  {
+    "id": 4,
+    "name": "Brasilia",
+    "continent": "Amérique du Sud",
+    "population": 3015268,
+    "area": 5801.937
+  },
+  {
+    "id": 5,
+    "name": "Pékin",
+    "continent": "Asie",
+    "population": 21700000,
+    "area": 16410.54
+  },
+  {
+    "id": 6,
+    "name": "Le Caire",
+    "continent": "Afrique",
+    "population": 9758624,
+    "area": 606.98
+  },
+  {
+    "id": 7,
+    "name": "Nairobi",
+    "continent": "Afrique",
+    "population": 4397073,
+    "area": 696.04
+  },
+  {
+    "id": 8,
+    "name": "Moscou",
+    "continent": "Europe",
+    "population": 12615279,
+    "area": 2511.47
+  },
+  {
+    "id": 9,
+    "name": "Canberra",
+    "continent": "Océanie",
+    "population": 424927,
+    "area": 814.2
+  }
+]
