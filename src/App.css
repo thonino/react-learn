@@ -1,7 +1,7 @@
 .App {text-align: center;}
 .container {display: inline;margin-left:5px;}
 
-.btn {
+.btn, button{
   color: white;
   padding: 0.5rem 0.8rem;
   border: none;
@@ -25,3 +25,6 @@
   border-radius: 0.25rem;
   margin-inline:3px;
 }
+.success{color: #5cb85c;}
+
+.left{text-align: left; margin-left: 20px;}
