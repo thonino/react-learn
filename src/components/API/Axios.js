@@ -46,7 +46,7 @@ function Axios() {
   return (
     <div className="App">
       <h1>API Locale : AXIOS</h1>
-      <ul>
+      <div>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -88,20 +88,26 @@ function Axios() {
             Ajouter
           </button>
         </form>
-        {reverseCapitales.map((capitale) => (
-          <p key={capitale.id}>
-            <strong>{capitale.name}</strong> ({capitale.continent})
-            <p>Population : {capitale.population} habitants</p>
-            <p>Superficie : {capitale.area} km²</p>
-            <button
-              onClick={() => handleDelete(capitale)}
-              className="btn-danger"
-            >
-              Del
-            </button>
-          </p>
-        ))}
-      </ul>
+        <div className="wrapContainer">
+          <div className="wrap1">
+            {reverseCapitales.map((capitale) => (
+              <div className="wrap2">
+                  <p key={capitale.id}>
+                    <strong>{capitale.name}</strong> ({capitale.continent})
+                    <p>Population : {capitale.population}</p>
+                    <p>Superficie : {capitale.area} km²</p>
+                    <button
+                      onClick={() => handleDelete(capitale)}
+                      className="btn-danger"
+                    >
+                      Del
+                    </button>
+                  </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
