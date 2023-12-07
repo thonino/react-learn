@@ -2,6 +2,7 @@
 import axios from "axios"; 
 import React, { useState, useEffect } from "react";
 
+
 function Axios() {
   const [capitales, setCapitales] = useState([]);
   const [formData, setFormData] = useState(
@@ -46,6 +47,9 @@ function Axios() {
   return (
     <div className="App">
       <h1>API Locale : AXIOS</h1>
+      <p className="text-green-500">Ceci est un texte Tailwind en bleu.</p>
+      <p className="text-red-500">Ceci est un texte Tailwind en rouge.</p>
+
       <div>
         <form onSubmit={handleSubmit}>
           <input
