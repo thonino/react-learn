@@ -1,17 +1,16 @@
-import React from 'react';
+import React from 'react'
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Bienvenue sur mon site</h1>
-        <main>
-        <p>Ceci est un exemple de projet utilisant uniquement React.</p>
-        </main>
-      </header>
+    <div >
+      <Routes> 
+        <Route path="/" element={<Home/>}/>
+      </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
