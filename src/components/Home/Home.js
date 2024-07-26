@@ -18,21 +18,35 @@ function Home() {
   }
 
   // Edit
-  // const [updateItem,  setUpdateItem] = useState();
-  // const handleUpdate = (data) => {
-  //   const newTabs = tabs.map(tab => 
-  //     item.id === data.id ? { ...item, nom: updateItem} : item
-  //   );
-  //   setTabs(newTabs);
-  // }
+  const [updateItem,  setUpdateItem] = useState();
+  const handleUpdate = (data) => {
+    const newTabs = tabs.map((item) => 
+      item.id === data.id ? { ...item, nom: updateItem} : item
+    );
+    setTabs(newTabs);
+  }
 
   return (
     <div>
-      <header className="element">
+      <header className="element ">
         <h1>Crud</h1>
       { 
         tabs.map((data) => 
-        <div key={data.id}> {data.nom} </div>
+        <div key={data.id}> {data.nom} 
+          <div>
+            <input  
+              className='input-form'
+              defaultValue={ updateItem ? updateItem : data.nom}
+              onChange={(e) => setUpdateItem(e.target.value)} 
+            />
+            <button 
+              className='btn'
+              onClick={() => handleUpdate(data)}
+            >  
+              Apply 
+            </button>
+          </div>
+        </div>
         ) 
       }
       <form onSubmit={handleSubmit} className='center'>
@@ -40,6 +54,7 @@ function Home() {
         <button type="submit" className="btn"> 
           Add
         </button>
+        
       </form>
       </header>
     </div>

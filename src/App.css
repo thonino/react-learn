@@ -30,5 +30,8 @@
   width: calc(100% - 62px); 
   box-sizing: border-box;
 }
-
+.d-flex{
+  display: flex;
+  justify-content: center;
+}
 
