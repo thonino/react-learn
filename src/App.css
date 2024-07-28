@@ -6,16 +6,24 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:start;
   font-size: calc(10px + 2vmin);
 }
-
 
 .btn {
   padding: 10px 20px;
   font-size: medium;
   border: none;
   background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.btn-red {
+  padding: 10px 20px;
+  font-size: medium;
+  border: none;
+  background-color: #ff4949;
   color: white;
   cursor: pointer;
   border-radius: 4px;
@@ -27,11 +35,15 @@
   font-size: medium;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: calc(100% - 62px); 
   box-sizing: border-box;
 }
 .d-flex{
   display: flex;
   justify-content: center;
+  gap : 10px;
+  
 }
+.column{flex-direction: column;}
+.mt{ margin-top : 20px}
+.ms{ margin-left: 20px;}
 
