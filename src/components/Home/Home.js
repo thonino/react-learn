@@ -1,4 +1,4 @@
-import React, { useState, useRef} from 'react'
+import React, { useState, useRef } from 'react'
 
 function Home() {
 
@@ -18,16 +18,17 @@ function Home() {
     const id = tab.length;
     const name = e.target.new.value;
     setTab([...tab, { id , name}])
-  
+
     // Reset the input field
-  if (resetInput.current) { resetInput.current.value = '';}
+  if(resetInput.current){resetInput.current.value = '';}
   }
 
   // Update :
-  const [update, setUpdate] = useState();
-  const handleUpdate = (data) => {
-    const newTab = tab.map((item)=>
-      item.id === data.id ? {...item, name: update} : item
+  const handleUpdate = (e, id) => {
+    e.preventDefault();
+    const update = e.target.update.value;
+    const newTab = tab.map(item =>
+      item.id === id ? {...item, name:update} : item
     );
     setTab(newTab);
   }
@@ -37,46 +38,44 @@ function Home() {
     const newTab = tab.filter((item) => item.id !== data.id);
     setTab(newTab);
   }
+
   return (
     <div className='center'>
       <h1>Liste pieces</h1>
         {tab.map((data)=>
-      <div key={data.id} className='mt'> 
+      <div key={data.id} className='mt d-flex'> 
         {data.name} 
+        {/* Update && Delete */}
+        <form onSubmit={(e) => handleUpdate(e, data.id)}>
           <input 
             className='input-form ms' 
-            defaultValue={update ? update : data.name}
-            onChange={(e)=>setUpdate(e.target.value)}
+            defaultValue={data.name}
+            name="update"
           />
-          <button className='btn' onClick={()=>handleUpdate(data)}>
+          <button className='btn' type="submit">
             Apply
           </button>
-          <button className='btn-red ms' onClick={()=>handleDelete(data)}> 
+          <button 
+            className='btn-red ms' 
+            onClick={()=>handleDelete(data)}
+          > 
             Remove
           </button>
+        </form>
       </div>
       )}
       <form onSubmit={handleSubmit}>
-        <h1> Ajouter Piece</h1>
+        <h1> Ajouter Piece </h1>
         <input 
           type="text" 
           className='input-form' 
           name="new" 
           ref={resetInput}
         />
-        <button type="submit" className='btn'> Add</button>
+        <button type="submit" className='btn'> Add </button>
       </form>
     </div>
   )
 }
 
 export default Home
-
-// Ref for the new input field
-// const resetInput = useRef(null);
-
-// Reset the input field
-//   if (resetInput.current) { resetInput.current.value = '';}
-//   }
-
-// ref={resetInput}
