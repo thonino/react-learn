@@ -1,75 +1,84 @@
-import React, { useState, useRef } from 'react'
+import React,  { useState, useRef } from 'react'
 
 function Home() {
-
-  // Reset input : useRef
-  const rsInput = useRef(null)
-
-  // show tab :
-  const [tab, setTab] = useState([
-    {id: 0, name: 'Livre'},
-    {id: 1, name: 'Cahier'},
-    {id: 2, name: 'Trousse'},
+  // Show :
+  const [tabs, setTabs] = useState([
+    {id: 0 , name : 'Maison'},
+    {id: 1 , name : 'Voiture'},
+    {id: 2 , name : 'Arbre'},
   ])
 
-  // add : 
-  const handleSubmit = (e) => {
+  //Reset input 1 :
+  const rsInput = useRef(null)
+
+  // Add :
+  const handleSubmit =  (e) => {
     e.preventDefault();
-    const id = tab.length;
+    const id = tabs.length;
     const name = e.target.new.value;
-    setTab([...tab, {id , name}]);
-    if ( rsInput.current ) { rsInput.current.value = "";}
+    setTabs([...tabs, {id , name}])
+    // Reset input 2 :
+    if(rsInput.current){
+      rsInput.current.value = ""
+    }
   }
 
-  // update :
+  // Update :
   const handleUpdate = (e, id) => {
     e.preventDefault();
     const name = e.target.update.value;
-    const newTab = tab.map((item) => 
-      item.id === id ? { name } : item 
+    const newTabs = tabs.map((item) =>
+      item.id === id ? { ...item, name} : item
+    );
+    setTabs(newTabs);
+  }
+
+  // Delete :
+  const handleDelete = (id => {
+    const newTabs = tabs.filter( item =>
+      item.id !== id
     )
-    setTab(newTab);
-  }
-  
-  // delete :
-  const handleDelete = (id) => {
-    const newTab = tab.filter(item => item.id !== id)
-    setTab(newTab);;
-  }
+    setTabs(newTabs)
+  })
+
 
   return (
     <div className='center'>
       <h1> List </h1>
-      {tab.map((data) => 
-        <div key={data.id} className='mt'>
-          <form onSubmit={(e) => handleUpdate(e, data.id)}>
+      {tabs.map((data) => 
+        <div key={data.id} className='d-flex mt'>
           {data.name}
+          <form onSubmit={(e)=>handleUpdate(e,data.id)}>
             <input 
-              type="text" 
-              name="update" 
-              className='input-form ms'
-              defaultValue={data.name}
+              defaultValue={data.name} 
+              name="update"
+              className='input-form'
             />
-            <button type="submit" className='btn'> Apply</button>
+            <button type="submit" className='btn'> 
+              Apply
+            </button>
             <button 
-              className='btn-red' 
-              onClick={() => handleDelete(data.id)}
+              onClick={()=> handleDelete(data.id)}
+              className='btn-red'
             > 
               Remove
             </button>
           </form>
         </div>
       )}
-      <form onSubmit={handleSubmit} className='mt'>
-        <h1> Add </h1>
+      <form onSubmit={handleSubmit}>
+        <h1>  Add </h1>
         <input 
-          type="text" 
           name="new" 
-          className='input-form' 
-          ref={rsInput} 
+          ref={rsInput}
+          type="text" 
+          className='input-form'
         />
-        <button type="submit" className='btn'> Add</button>
+        <button type="submit" className='btn'>
+          Add
+        </button>
       </form>
+      
     </div>
   )
 }
