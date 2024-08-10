@@ -1,19 +1,77 @@
-
-import React from 'react'
+import React, { useState, useRef } from 'react'
 
 function Home() {
     // Show
+    const [tabs, setTabs] = useState([
+      { id: 0, name: 'Voiture'},
+      { id: 1, name: 'Bateau'},
+      { id: 2, name: 'Avion'},
+    ])
+
+    // Reset input 1
+    const rsInput = useRef(null)
 
     // Add
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const id = tabs.length;
+      const name = e.target.new.value
+      setTabs([...tabs, {id , name}]);
+      if(rsInput.current){rsInput.current.value =""}
+    }
 
     // Uptade
+    const handleUpdate = (e, id) => {
+      e.preventDefault();
+      const name = e.target.update.value;
+      const newTabs = tabs.map((item) => 
+        item.id === id ? { ...item, name} : item
+      )
+      setTabs(newTabs)
+    }
 
     // Delete
-    
+    const handleDelete = (id) => {
+      const newTabs = tabs.filter((item) => 
+        item.id !== id 
+      )
+      setTabs(newTabs)
+    }
 
   return (
-    <div>
-      
+    <div className='center'>
+      <h1> List </h1>
+      {tabs.map((data) =>
+      <div key={data.id} className="d-flex mt">
+        {data.name}
+        <form onSubmit={(e)=>handleUpdate(e, data.id)}>
+          <input 
+            defaultValue={data.name} 
+            className='input-form'
+            name="update"
+          />
+          <button type="submit" className='btn'>
+            Apply
+          </button>
+          <button 
+            onClick={() => handleDelete(data.id)} 
+            className='btn-red'
+          >
+            Remove
+          </button>
+        </form>
+      </div>
+      )}
+      <form onSubmit={handleSubmit}>
+        <h1> Add </h1>
+        <input 
+          type="text" 
+          className="input-form"
+          name="new"
+          ref={rsInput}
+        />
+        <button className="btn">Add</button>
+      </form>
     </div>
   )
 }
